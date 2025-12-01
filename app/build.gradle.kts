@@ -44,6 +44,7 @@ dependencies {
     val fragment_version = "1.8.9"
     implementation("androidx.fragment:fragment:$fragment_version")
     implementation("androidx.fragment:fragment-ktx:$fragment_version")
+//    implementation(libs.androidx.fragment.ktx)
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     implementation(libs.androidx.core.ktx)
