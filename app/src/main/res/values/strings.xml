@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="weather_app_title">Weather App</string>
+    <string name="list_item_format">List Item %d</string>
 </resources>
