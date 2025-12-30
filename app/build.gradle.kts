@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -36,6 +37,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -47,6 +49,13 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:$fragment_version")
 //    implementation(libs.androidx.fragment.ktx)
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    // retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    // moshi converter
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+    // moshi kotlin
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

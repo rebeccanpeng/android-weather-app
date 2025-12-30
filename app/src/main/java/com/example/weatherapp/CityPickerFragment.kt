@@ -1,6 +1,7 @@
 package com.example.weatherapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -26,6 +27,7 @@ class CityPickerFragment : Fragment(R.layout.city_picker) {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 // 2. This block runs only between STARTED and STOPPED
                 viewModel.uiState.collect {
+                    Log.d("CityPickerFragment", "UI State: $it")
                     // Update UI safely
                     adapter.updateData(it)
                 }
