@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/cityPickerFragment">
+
+    <fragment
+        android:id="@+id/cityPickerFragment"
+        android:name="com.example.weatherapp.CityPickerFragment"
+        android:label="CityPickerFragment" >
+        <action
+            android:id="@+id/action_cityPickerFragment_to_cityDetailFragment"
+            app:destination="@id/cityDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cityDetailFragment"
+        android:name="com.example.weatherapp.CityDetailFragment"
+        android:label="CityDetailFragment" >
+        <argument
+            android:name="city"
+            app:argType="string" />
+    </fragment>
+</navigation>

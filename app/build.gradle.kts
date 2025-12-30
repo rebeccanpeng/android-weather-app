@@ -3,6 +3,9 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    kotlin("plugin.serialization") version "2.0.21"
+    id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -38,6 +41,7 @@ android {
     buildFeatures {
         compose = true
         buildConfig = true
+        viewBinding = true
     }
 }
 
@@ -55,6 +59,10 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     // moshi kotlin
     implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
+
+    val nav_version = "2.9.6"
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
 
     implementation(libs.androidx.core.ktx)

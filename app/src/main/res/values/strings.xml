@@ -2,4 +2,5 @@
     <string name="app_name">WeatherApp</string>
     <string name="weather_app_title">Weather App</string>
     <string name="list_item_format">List Item %d</string>
+    <string name="details_title">City Details</string>
 </resources>

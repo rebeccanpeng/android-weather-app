@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
 class CityAdapter (private var cities: List<String>): RecyclerView.Adapter<CityAdapter.ViewHolder>() {
@@ -14,6 +15,11 @@ class CityAdapter (private var cities: List<String>): RecyclerView.Adapter<CityA
     fun updateData(newCitiesData: List<String>) {
         cities = newCitiesData
         notifyDataSetChanged()
+    }
+
+    fun onCityClicked(cityName: String, view: View) {
+        val action = CityPickerFragmentDirections.actionCityPickerFragmentToCityDetailFragment(cityName)
+        findNavController(view).navigate(action)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,6 +33,9 @@ class CityAdapter (private var cities: List<String>): RecyclerView.Adapter<CityA
         val city = cities[position]
         val textView = holder.cityName
         textView.text = city
+        holder.itemView.setOnClickListener {
+            onCityClicked(city, it)
+        }
     }
 
     override fun getItemCount(): Int {
