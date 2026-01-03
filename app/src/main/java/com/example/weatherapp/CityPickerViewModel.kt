@@ -3,6 +3,8 @@ package com.example.weatherapp
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.weatherapp.model.CityData
+import com.example.weatherapp.model.CityWeather
 import com.example.weatherapp.network.RetrofitClient
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -11,8 +13,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class CityPickerViewModel : ViewModel() {
-    private val _uiState = MutableStateFlow<List<String>>(emptyList())
-    val uiState: StateFlow<List<String>> = _uiState
+    private val _uiState = MutableStateFlow<List<CityData>>(emptyList())
+    val uiState: StateFlow<List<CityData>> = _uiState
 
     private val cities = listOf(
         "McLean",
@@ -51,13 +53,20 @@ class CityPickerViewModel : ViewModel() {
         }
     }
 
-    private suspend fun getWeatherForCity(cityName: String): String? {
+    private suspend fun getWeatherForCity(cityName: String): CityData? {
         return try {
             val geocodingResponse = RetrofitClient.weatherApiService.getLatLonByCity(cityName, apiKey = apiKey)
             if (geocodingResponse.isEmpty()) return null
             val location = geocodingResponse[0]
             val weather = RetrofitClient.weatherApiService.getWeather(location.lat, location.lon, apiKey)
-            "${weather.name}: ${weather.main.temp}°F"
+            CityData(
+                cityName = weather.name,
+                country = location.country,
+                currTemp = weather.main.temp,
+                tempMin = weather.main.tempMin,
+                tempMax = weather.main.tempMax,
+                humidity = weather.main.humidity
+            )
         } catch (e: Exception) {
             Log.e("WeatherApp", "Geocoding or Weather call failed for $cityName", e)
             null

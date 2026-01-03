@@ -14,10 +14,10 @@
     </fragment>
     <fragment
         android:id="@+id/cityDetailFragment"
-        android:name="com.example.weatherapp.CityDetailFragment"
+        android:name="com.example.weatherapp.CityDetailsFragment"
         android:label="CityDetailFragment" >
         <argument
             android:name="city"
-            app:argType="string" />
+            app:argType="com.example.weatherapp.model.CityData" />
     </fragment>
 </navigation>

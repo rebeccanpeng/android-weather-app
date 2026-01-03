@@ -1,16 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/box_background"
     android:layout_margin="8dp"
-    >
+    android:paddingBottom="8dp"
+    android:background="@drawable/box_background"
+    android:elevation="4dp">
+
     <TextView
         android:id="@+id/city_name"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
-        android:textColor="@color/white"/>
-</LinearLayout>
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="New York City" />
+
+    <TextView
+        android:id="@+id/country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/city_name"
+        tools:text="US" />
+
+    <TextView
+        android:id="@+id/curr_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:textSize="38sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/country"
+        tools:text="36\u2109" />
+
+    <TextView
+        android:id="@+id/temp_range"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/country"
+        tools:text="32\u00B0/64\u2109" />
+
+    <TextView
+        android:id="@+id/humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/temp_range"
+        app:layout_constraintStart_toEndOf="@+id/humidity_indicator"
+        app:layout_constraintTop_toBottomOf="@+id/temp_range"
+        tools:text="0%" />
+
+    <ImageView
+        android:id="@+id/humidity_indicator"
+        android:layout_width="25dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="208dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintStart_toEndOf="@+id/curr_temp"
+        app:layout_constraintTop_toBottomOf="@+id/temp_range"
+        app:srcCompat="@drawable/humidity_indicator" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
